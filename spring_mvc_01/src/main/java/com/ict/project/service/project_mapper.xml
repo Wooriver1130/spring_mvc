@@ -34,9 +34,9 @@
 	<select id="judgeUserEmail" parameterType="String" resultType="com.ict.project.vo.UserVO">
 		select * from pjuser where userMail = #{userMail}
 	</select>
-	<select id="judgeUserEmail" parameterType="String" resultType="com.ict.project.vo.NaverUserResponse">
+<!-- 	<select id="judgeUserEmail" parameterType="String" resultType="com.ict.project.vo.NaverUserResponse">
 		select * from pjnaveruser where n_userId = #{n_userId}
-	</select>
+	</select> -->
 	
 	
 	
