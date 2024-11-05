@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="login">
+	<insert id="getInsert" parameterType="com.ict.edu06.vo.LoginVO">
+		insert into members(u_id, u_pw, u_name, u_age, u_reg) 
+					values(#{u_id}, #{u_pw}, #{u_name}, #{u_age}, DATE(NOW())) 
+	</insert>
+	
+	<select id="selectOne" parameterType="com.ict.edu06.vo.LoginVO" resultType="com.ict.edu06.vo.LoginVO">
+		select * from members where u_id = #{u_id}
+	</select>
+</mapper>

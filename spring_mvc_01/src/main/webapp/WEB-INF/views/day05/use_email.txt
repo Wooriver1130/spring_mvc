@@ -1,0 +1,40 @@
+	google을 이용한 메일 보내기
+	1. google에서 계정관리 - 보안 - 2단계 인증 성정하기
+	2. 검색창에 앱 비밀번호 검색
+		=> 	생성된 앱 비밀번호 - 기기용 앱 비밀번호 - dhcr nqmu qgsd yqdy
+	3. pom.xml에서 라이브러리 넣기
+		- javax.mail
+		- spring-context-support
+		- javax.mail-api
+	4. mail-context.xml 생성
+	 - /WEB-INF/spring/mail-context.xml
+		
+		- mail-context.xml에 이하의 내용을 추가
+			
+		<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="smtp.gmail.com"/>
+        <property name="port" value="587"/>
+        <property name="defaultEncoding" value="utf-8"/>
+        <property name="username" value="구글아이디"/>
+        <property name="password" value="구글비밀번호"/>        
+        <property name="javaMailProperties" >
+             <props>
+                <prop key="mail.transport.protocol">smtp</prop>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+                <prop key="mail.debug">true</prop>
+                <prop key="mail.smtp.ssl.trust">smtp.gmail.com</prop>
+                <prop key="mail.smtp.ssl.protocols">TLSv1.2</prop>
+            </props>
+        </property>        
+    </bean>		
+
+	5. web.xml에 mail-context.xml을 추가
+	
+		<context-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>
+				/WEB-INF/spring/root-context.xml
+				/WEB-INF/spring/mail-context.xml
+			</param-value>
+		</context-param>

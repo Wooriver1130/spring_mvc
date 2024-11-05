@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ajax_members">
+	<select id="getMemberList" resultType="com.ict.edu04.vo.MembersVO">
+		select * from members order by u_idx
+	</select>
+	<select id="getMemberIdChk" resultType="int" parameterType="String">
+		select count(*) from members where u_id = #{u_id}
+	</select>
+	<insert id="getMemberInsert" parameterType="com.ict.edu04.vo.MembersVO">
+		insert into members(u_id, u_pw, u_name, u_age, u_reg) values(#{u_id}, #{u_pw}, #{u_name}, #{u_age}, DATE(NOW()))
+	</insert>
+	<delete id="getMemberDelete" parameterType="String">
+		delete from members where u_idx = #{u_idx}
+	</delete>
+	
+	
+	
+</mapper>
